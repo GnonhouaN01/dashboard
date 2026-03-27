@@ -1,5 +1,5 @@
 import { KeyIcon, AtSymbolIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
-import React from 'react'
+
 import { lusitana } from './fonts'
 import Button from './button'
 

@@ -1,17 +1,23 @@
 import clsx from 'clsx';
-import React from 'react'
-interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    readonly children: React.ReactNode;
+
+
+interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
 }
-export default function Button({children,className,...rest}:PropsButton) {
+
+// Rend toutes les props du composant readonly
+type ReadonlyPropsButton = Readonly<PropsButton>;
+
+export default function Button({ children, className, ...rest }: ReadonlyPropsButton) {
   return (
     <button
-    {...rest}
-        className={clsx('flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
-            className,
-        )}
+      {...rest}
+      className={clsx(
+        'flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
+        className
+      )}
     >
       {children}
     </button>
-  )
+  );
 }
